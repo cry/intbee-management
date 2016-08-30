@@ -77,7 +77,8 @@
 
     var countdown = null,
         readyCountdown = null,
-        pause = false;
+        pause = false,
+        timeupMessage = "Times up.";
 
     window.onload = () => {
         document.getElementById("time").innerHTML = "120";
@@ -124,7 +125,13 @@
                     var counter = document.getElementById('time'),
                         val = counter.innerHTML;
 
-                        if (!pause) counter.innerHTML = --val;
+                        if (val == 1) {
+                            timediv.innerHTML = timeupMessage;
+
+                            clearInterval(countdown);
+                        } else {
+                            if (!pause) counter.innerHTML = --val;
+                        }
                 }, 1000)
             } else {
                 if (!pause) counter.innerHTML = --val;
@@ -145,6 +152,8 @@
 
         pausenotice.style.display = (pause ? "block" : "none");
     }
+
+    setTimeoutMessage = (msg) => timeupMessage = msg;
 
     </script>
 </body>

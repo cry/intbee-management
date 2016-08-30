@@ -69,6 +69,10 @@
 
     <button class="btn btn-danger" onclick="window.opener.togglePause()" style="width: 100%;">Toggle the timer</button>
 
+    <h2>Time up message</h2>
+
+    <input type="text" class="form-control" name="timeup" onkeyup="timeup()" id="timeup" value="Times up.">
+
     </div>
 
     <script>
@@ -80,7 +84,7 @@
         }, 1000);
 
         render = () => {
-            var tex = document.getElementById('int').value;
+            var tex = document.getElementById('int').value.split("$").join("");
 
             var math = MathJax.Hub.getAllJax("MathDiv")[0];
 
@@ -89,7 +93,7 @@
 
         send = () => {
 
-            var tex = document.getElementById('int').value,
+            var tex = document.getElementById('int').value.split("$").join(""),
                 time = document.getElementById('time').value,
                 prep = document.getElementById('prep').value;
 
@@ -103,6 +107,8 @@
         }
 
         add = () => window.opener.addTime(document.getElementById('extra').value);
+
+        timeup = () => window.opener.setTimeoutMessage(document.getElementById('timeup').value);
 
     </script>
     
