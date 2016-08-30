@@ -120,10 +120,13 @@
             timediv = document.getElementById('time'),
             readydiv = document.getElementById('ready');
 
+        if (pause) {
+            togglePause();
+        };
+
         // Cleanup
         clearInterval(countdown);
         clearInterval(readyCountdown);
-        pause = false;
 
         readydiv.style.display = "block";
         intdiv.style.display = "none";
