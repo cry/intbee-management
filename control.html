@@ -73,6 +73,12 @@
 
     <script>
 
+        setInterval(() => {
+            if (window.opener == null) {
+                document.body.innerHTML = "<h1 style='text-align: center;'>Main page closed. Open a new instance and reopen the control panel.</h1>";
+            };
+        }, 1000);
+
         render = () => {
             var tex = document.getElementById('int').value;
 
