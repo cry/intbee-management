@@ -25,10 +25,21 @@
             text-align: center;
         }
 
-        #cbtn{
+        .btnright{
             position:absolute;
             bottom:0;
             right:0;
+        }
+
+        .btnleft {
+            position: absolute;
+            bottom: 0;
+            right: 120px;
+        }
+
+        body, html {
+            height: 100%;
+            overflow: hidden;
         }
 
     </style>
@@ -51,7 +62,16 @@
 
     </div>
 
-    <a href="control.html" target="_blank">    <button class="btn btn-default" id="cbtn">control panel</button></a>    
+    <div class="container">
+        <div class="col-md-6">
+        </div>
+
+        <div class="col-md-6" id="divide" style="border-left: 1px dotted #000000; height:100vh;">
+        </div>
+    </div>
+
+    <button class="btn btn-default btnleft" onclick="divide()">dividing line</button>   
+    <a href="control.html" target="_blank">    <button class="btn btn-default btnright" id="cbtn">control panel</button></a> 
 
     <script>
 
@@ -61,6 +81,10 @@
 
     window.onload = () => {
         document.getElementById("time").innerHTML = "120";
+    }
+
+    divide = () => {
+        document.getElementById('divide').style.display = (document.getElementById('divide').style.display == "none" ? "block" : "none");
     }
 
     render = (tex, time, prep) => {
