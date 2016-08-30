@@ -2,7 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>intbee control panel</title>
+    <title>Integration Bee Control Panel</title>
+
+    <!--
+          __
+      ___( o)>
+      \ <_. )
+       `---'
+    
+    A wild duck appeared.
+
+    Carey Li 2016.
+
+    Beware, dragons lie beyond.
+
+    -->
 
     <link rel="stylesheet" href="https://bootswatch.com/lumen/bootstrap.min.css">
 
@@ -28,19 +42,19 @@
 
     <h5>Round Integral</h5>
 
-    <input type="text" name="int" placeholder="integral to display" onkeyup="render()" class="form-control" id="int" value="\int^\frac{\pi}{4}_1 \frac{lnx}{x^2} \,dx">
+    <input type="text" name="int" placeholder="Integral to display" onkeyup="render()" class="form-control" id="int" value="\int^\frac{\pi}{4}_1 \frac{lnx}{x^2} \,dx">
 
     <br>
 
     <h5>Time allowed</h5>
 
-    <input type="number" name="time" placeholder="seconds for solve" class="form-control"  id="time"> 
+    <input type="number" name="time" placeholder="Seconds for solving" class="form-control"  id="time"> 
 
     <br>
     
-    <h5>Warning time</h5>
+    <h5>Round start time</h5>
 
-    <input type="number" name="prep" placeholder="prep time" value="5" class="form-control"  id="prep">
+    <input type="number" name="prep" placeholder="Round start time" value="5" class="form-control"  id="prep">
 
 
     <br>
@@ -61,7 +75,7 @@
 
     <h2>Extra time</h2>
 
-    <input type="number" class="form-control" name="extra" id="extra" value="" placeholder="extra time to add"> <br>
+    <input type="number" class="form-control" name="extra" id="extra" value="" placeholder="Extra time to add"> <br>
  
     <button onclick="add()" style="width: 100%" class="btn btn-danger">Add extra time</button>
 
@@ -69,7 +83,7 @@
 
     <button class="btn btn-danger" onclick="window.opener.togglePause()" style="width: 100%;">Toggle the timer</button>
 
-    <h2>Time up message</h2>
+    <h2>Time up message <small>live updating</small></h2>
 
     <input type="text" class="form-control" name="timeup" onkeyup="timeup()" id="timeup" value="Times up.">
 
@@ -84,7 +98,7 @@
         }, 1000);
 
         render = () => {
-            var tex = document.getElementById('int').value.split("$").join("");
+            var tex = document.getElementById('int').value.split("$").join("").split("$$").join("");
 
             var math = MathJax.Hub.getAllJax("MathDiv")[0];
 
@@ -93,7 +107,7 @@
 
         send = () => {
 
-            var tex = document.getElementById('int').value.split("$").join(""),
+            var tex = document.getElementById('int').value.split("$").join("").split("$$").join(""),
                 time = document.getElementById('time').value,
                 prep = document.getElementById('prep').value;
 
