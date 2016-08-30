@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>intbee</title>
+
+    <link rel="stylesheet" href="https://bootswatch.com/lumen/bootstrap.min.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$$','$$'], ['\\(','\\)']]},
+            CommonHTML: {
+                scale: 240
+            }
+        });
+    </script>
+
+    <script type="text/javascript"
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <style>
+
+        .center {
+            text-align: center;
+        }
+
+        #cbtn{
+            position:absolute;
+            bottom:0;
+            right:0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="center"> <br>
+
+        <div id="ready">
+            
+            <h2>Welcome to the NSBHS integration bee.</h2>
+
+        </div>
+        
+        <div style="display: none;" id="int">$$ \int xdx$$</div>
+
+        <h1 style="display: none; font-size: 4em;" id="time"></h1>
+
+        <h1 style="display: none;" style="color: red;" id="pause">Paused.</h1>
+
+    </div>
+
+    <a href="control.html" target="_blank">    <button class="btn btn-default" id="cbtn">control panel</button></a>    
+
+    <script>
+
+    var countdown = null,
+        readyCountdown = null,
+        pause = false;
+
+    window.onload = () => {
+        document.getElementById("time").innerHTML = "120";
+    }
+
+    render = (tex, time, prep) => {
+
+        var math = MathJax.Hub.getAllJax("int")[0],
+            intdiv = document.getElementById('int'),
+            timediv = document.getElementById('time'),
+            readydiv = document.getElementById('ready');
+
+        // Cleanup
+        clearInterval(countdown);
+        clearInterval(readyCountdown);
+        pause = false;
+
+        readydiv.style.display = "block";
+        intdiv.style.display = "none";
+        timediv.style.display = "none";
+
+        MathJax.Hub.Queue(["Text",math,tex]);
+
+        document.getElementById("time").innerHTML = time;
+
+        readydiv.innerHTML = "<h1>Round starts in <br> <span id='readytime' style='font-size: 4em'>" + prep + "</span> </h1>"
+
+        readyCountdown = setInterval(() => {
+            var counter = document.getElementById('readytime'),
+                val = counter.innerHTML;
+
+            if (val == 1) {
+                readydiv.style.display = "none";
+                intdiv.style.display = "block";
+                timediv.style.display = "block";
+
+                clearInterval(readyCountdown);
+
+                countdown = setInterval(() => {
+                    var counter = document.getElementById('time'),
+                        val = counter.innerHTML;
+
+                        if (!pause) counter.innerHTML = --val;
+                }, 1000)
+            } else {
+                if (!pause) counter.innerHTML = --val;
+            }
+        }, 1000);
+
+    }
+
+    addTime = (time) => {
+        document.getElementById('time').innerHTML = Number(document.getElementById('time').innerHTML) + Number(time);
+    }
+
+    togglePause = () => {
+
+        var pausenotice = document.getElementById('pause');
+
+        pause = !pause;
+
+        pausenotice.style.display = (pause ? "block" : "none");
+    }
+
+    </script>
+</body>
+</html>

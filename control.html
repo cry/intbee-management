@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>intbee control panel</title>
+
+    <link rel="stylesheet" href="https://bootswatch.com/lumen/bootstrap.min.css">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$$','$$'], ['\\(','\\)']]},
+            CommonHTML: {
+                scale: 240
+            }
+        });
+    </script>
+
+    <script type="text/javascript"
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+
+</head>
+<body>
+
+    <div class="container-fluid">
+        <br>
+
+    <h5>Round Integral</h5>
+
+    <input type="text" name="int" placeholder="integral to display" onkeyup="render()" class="form-control" id="int" value="\int^\frac{\pi}{4}_1 \frac{lnx}{x^2} \,dx">
+
+    <br>
+
+    <h5>Time allowed</h5>
+
+    <input type="number" name="time" placeholder="seconds for solve" class="form-control"  id="time"> 
+
+    <br>
+    
+    <h5>Warning time</h5>
+
+    <input type="number" name="prep" placeholder="prep time" value="5" class="form-control"  id="prep">
+
+
+    <br>
+
+    <h2>Preview</h2>
+
+    <div id="preview">
+        
+        $$ \int^\frac{\pi}{4}_1 \frac{lnx}{x^2} \,dx $$
+
+    </div>
+
+    <br>
+
+    <button onclick="send()" style="width: 100%" class="btn btn-success">Render & Begin</button>
+
+    <br><br>
+
+    <h2>Extra time</h2>
+
+    <input type="number" class="form-control" name="extra" id="extra" value="" placeholder="extra time to add"> <br>
+ 
+    <button onclick="add()" style="width: 100%" class="btn btn-danger">Add extra time</button>
+
+    <h2>Pause/Unpause</h2>
+
+    <button class="btn btn-danger" onclick="window.opener.togglePause()" style="width: 100%;">Toggle the timer</button>
+
+    </div>
+
+    <script>
+
+        render = () => {
+            var tex = document.getElementById('int').value;
+
+            var math = MathJax.Hub.getAllJax("MathDiv")[0];
+
+            MathJax.Hub.Queue(["Text",math,tex]);
+        }
+
+        send = () => {
+
+            var tex = document.getElementById('int').value,
+                time = document.getElementById('time').value,
+                prep = document.getElementById('prep').value;
+
+            if (tex == "" || time == "" || prep == "") {
+                alert("Must enter something!");
+
+                return;
+            };
+
+            window.opener.render(tex, time, prep);
+        }
+
+        add = () => window.opener.addTime(document.getElementById('extra').value);
+
+    </script>
+    
+</body>
+</html>
