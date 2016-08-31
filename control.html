@@ -42,7 +42,7 @@
 
     <h5>Round Integral</h5>
 
-    <input type="text" name="int" placeholder="Integral to display" onkeyup="render()" class="form-control" id="int" value="\int^\frac{\pi}{4}_1 \frac{lnx}{x^2} \,dx">
+    <input type="text" name="int" placeholder="Integral to display" onkeyup="render()" class="form-control" id="int" value="\int^\frac{\pi}{4}_1 \frac{lnx}{x^2} dx">
 
     <br>
 
@@ -63,7 +63,7 @@
 
     <div id="preview">
         
-        $$ \int^\frac{\pi}{4}_1 \frac{lnx}{x^2} \,dx $$
+        $$ \int^\frac{\pi}{4}_1 \frac{lnx}{x^2} \hspace{4mm}dx $$
 
     </div>
 
@@ -98,7 +98,7 @@
         }, 1000);
 
         render = () => {
-            var tex = document.getElementById('int').value.split("$").join("").split("$$").join("");
+            var tex = document.getElementById('int').value.split("$").join("").split("$$").join("").replace("dx", '\\hspace{4mm}dx');
 
             var math = MathJax.Hub.getAllJax("MathDiv")[0];
 
@@ -107,7 +107,7 @@
 
         send = () => {
 
-            var tex = document.getElementById('int').value.split("$").join("").split("$$").join(""),
+            var tex = document.getElementById('int').value.split("$").join("").split("$$").join("").replace("dx", '\\hspace{4mm}dx'),
                 time = document.getElementById('time').value,
                 prep = document.getElementById('prep').value;
 
