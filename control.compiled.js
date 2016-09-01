@@ -32,3 +32,20 @@ changeName = function(player, name) {
 changeScore = function(player, name) {
   return window.opener.changeScore(player, name);
 };
+bumpInt = function() {
+  var list = document.getElementById('intlist').value,
+      parsedList = list.split(/\r|\n/);
+  if (parsedList[0] == "") {
+    alert('List is empty.');
+    return;
+  }
+  if (parsedList.slice(-1)[0] == "")
+    parsedList.pop();
+  document.getElementById('int').value = parsedList[0];
+  render();
+  parsedList.shift();
+  document.getElementById('intlist').value = parsedList.join("\r\n");
+};
+hideList = function() {
+  return document.getElementById('intlist').style.display = (document.getElementById('intlist').style.display == "none" ? "block" : "none");
+};

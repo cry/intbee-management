@@ -83,6 +83,22 @@
 
     <br><br>
 
+    <h2>Integral list</h2>
+
+    <textarea name="intlist" id="intlist" cols="100" rows="10" style="box-sizing: border-box; width: 100%" placeholder="Separate integrals with new lines."></textarea> <br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-default" style="width: 100%" onclick="hideList()">Hide list</button>
+            </div>
+
+            <div class="col-md-6">
+                <button class="btn btn-success" style="width:100%" onclick="bumpInt()">Move next integral up</button>
+            </div>
+        </div>
+    </div>
+
     <h2>Extra time</h2>
 
     <input type="number" class="form-control" name="extra" id="extra" value="" placeholder="Extra time to add"> <br>
@@ -95,16 +111,29 @@
 
     <h2>Players</h2>
 
-    <h3>Left player</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" onkeyup="changeName('left', this.value)" name="leftname" id="leftname" class="form-control" value="Player1">
+            </div>
 
-    <input type="text" onkeyup="changeName('left', this.value)" name="leftname" id="leftname" class="form-control" value="Player1">
-    <br>
-    <input type="number" name="leftscore" id="leftscore" class="form-control" value="0" onkeyup="changeScore('left', this.value)">
+            <div class="col-md-6">
+                <input type="number" name="leftscore" id="leftscore" class="form-control" value="0" onkeyup="changeScore('left', this.value)">
+            </div>
+        </div>
+    </div>  <br>
 
-    <h3>Right player</h3>
-    <input type="text" onkeyup="changeName('right', this.value)" name="rightname" id="rightname" class="form-control" value="Player2">
-    <br>
-    <input type="number" name="rightscore" id="rightscore" class="form-control" value="0" onkeyup="changeScore('right', this.value)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" onkeyup="changeName('right', this.value)" name="rightname" id="rightname" class="form-control" value="Player2">
+            </div>
+
+            <div class="col-md-6">
+                <input type="number" name="rightscore" id="rightscore" class="form-control" value="0" onkeyup="changeScore('right', this.value)">
+            </div>
+        </div>
+    </div>
 
     <h2>Time up message <small>live updating</small></h2>
 

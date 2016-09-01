@@ -34,3 +34,26 @@
         changeName = (player, name) => window.opener.changeName(player, name);
 
         changeScore = (player, name) => window.opener.changeScore(player, name);
+
+        bumpInt = () => {
+            var list = document.getElementById('intlist').value,
+                parsedList = list.split(/\r|\n/);
+
+            if (parsedList[0] == "") {
+                alert('List is empty.');
+
+                return;
+            }
+
+            if (parsedList.slice(-1)[0] == "") parsedList.pop();
+
+            document.getElementById('int').value = parsedList[0];
+
+            render();
+
+            parsedList.shift();
+
+            document.getElementById('intlist').value = parsedList.join("\r\n");
+        }
+
+        hideList = () => document.getElementById('intlist').style.display = (document.getElementById('intlist').style.display == "none" ? "block" : "none");
