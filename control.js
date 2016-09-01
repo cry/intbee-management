@@ -47,7 +47,7 @@
 
             if (parsedList.slice(-1)[0] == "") parsedList.pop();
 
-            document.getElementById('int').value = parsedList[0];
+            document.getElementById('int').value = parsedList[0].replace('\\item', '');
 
             render();
 
