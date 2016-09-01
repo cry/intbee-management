@@ -3,7 +3,11 @@ var countdown = null,
     pause = false,
     timeupMessage = "Times up.";
 window.onload = function() {
-  document.getElementById("time").innerHTML = "120";
+  var school = location.search.split('school=')[1];
+  if (school) {
+    document.getElementById("school").textContent = school;
+  }
+  ;
 };
 divide = function() {
   document.getElementById('divide').style.display = (document.getElementById('divide').style.display == "none" ? "block" : "none");
@@ -89,9 +93,16 @@ changeName = function(player, name) {
   }
 };
 changeScore = function(player, score) {
+  if (score == "" || score > 5)
+    return false;
+  var str = "";
+  for (var i = score - 1; i >= 0; i--) {
+    str += "X";
+  }
+  ;
   if (player == "left") {
-    document.getElementById("leftscore").textContent = score;
+    document.getElementById("leftscore").textContent = str;
   } else {
-    document.getElementById("rightscore").textContent = score;
+    document.getElementById("rightscore").textContent = str;
   }
 };

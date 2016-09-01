@@ -4,7 +4,13 @@
         timeupMessage = "Times up.";
 
     window.onload = () => {
-        document.getElementById("time").innerHTML = "120";
+
+        var school = location.search.split('school=')[1]
+
+        if (school) {
+            document.getElementById("school").textContent = school;
+        };
+
     }
 
     divide = () => {
@@ -116,9 +122,18 @@
     }
 
     changeScore = (player, score) => {
+
+        if (score == "" || score > 5) return false;
+
+        var str = "";
+
+        for (var i = score -1; i >= 0; i--) {
+            str += "X"
+        };
+
         if (player == "left") {
-            document.getElementById("leftscore").textContent = score;
+            document.getElementById("leftscore").textContent = str;
         } else {
-            document.getElementById("rightscore").textContent = score;
+            document.getElementById("rightscore").textContent = str;
         }
     }
