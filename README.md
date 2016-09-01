@@ -14,3 +14,7 @@ A control panel for integration bee style events e.g. the MIT integration bee.
 Project the index page onto a board, control from the control panel. Equations rendered in LaTeX. 
 
 Pausing and adding extra time is possible through the control panel.
+
+You can change the schoiol name through the school get parameter
+
+    https://cry.github.io/intbee-management/?school=yourschoolname
