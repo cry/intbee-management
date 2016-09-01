@@ -106,3 +106,19 @@
     }
 
     setTimeoutMessage = (msg) => timeupMessage = msg;
+
+    changeName = (player, name) => {
+        if (player == "left") {
+            document.getElementById("leftname").innerHTML = name;
+        } else {
+            document.getElementById("rightname").innerHTML = name;
+        }
+    }
+
+    changeScore = (player, score) => {
+        if (player == "left") {
+            document.getElementById("leftscore").innerHTML = score;
+        } else {
+            document.getElementById("rightscore").innerHTML = score;
+        }
+    }

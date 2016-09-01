@@ -26,3 +26,9 @@ add = function() {
 timeup = function() {
   return window.opener.setTimeoutMessage(document.getElementById('timeup').value);
 };
+changeName = function(player, name) {
+  return window.opener.changeName(player, name);
+};
+changeScore = function(player, name) {
+  return window.opener.changeScore(player, name);
+};

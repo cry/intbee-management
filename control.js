@@ -30,3 +30,7 @@
         add = () => window.opener.addTime(document.getElementById('extra').value);
 
         timeup = () => window.opener.setTimeoutMessage(document.getElementById('timeup').value);
+
+        changeName = (player, name) => window.opener.changeName(player, name);
+
+        changeScore = (player, name) => window.opener.changeScore(player, name);

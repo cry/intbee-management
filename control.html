@@ -35,6 +35,14 @@
         src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
 
+    <style>
+    
+    body {
+        margin-bottom: 50px;
+    }
+
+    </style>
+
 
 </head>
 <body>
@@ -84,6 +92,19 @@
     <h2>Pause/Unpause</h2>
 
     <button class="btn btn-danger" onclick="window.opener.togglePause()" style="width: 100%;">Toggle the timer</button>
+
+    <h2>Players</h2>
+
+    <h3>Left player</h3>
+
+    <input type="text" onkeyup="changeName('left', this.value)" name="leftname" id="leftname" class="form-control" value="Player1">
+    <br>
+    <input type="number" name="leftscore" id="leftscore" class="form-control" value="0" onkeyup="changeScore('left', this.value)">
+
+    <h3>Right player</h3>
+    <input type="text" onkeyup="changeName('right', this.value)" name="rightname" id="rightname" class="form-control" value="Player2">
+    <br>
+    <input type="number" name="rightscore" id="rightscore" class="form-control" value="0" onkeyup="changeScore('right', this.value)">
 
     <h2>Time up message <small>live updating</small></h2>
 

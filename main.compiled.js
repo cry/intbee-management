@@ -81,3 +81,17 @@ togglePause = function() {
 setTimeoutMessage = function(msg) {
   return timeupMessage = msg;
 };
+changeName = function(player, name) {
+  if (player == "left") {
+    document.getElementById("leftname").innerHTML = name;
+  } else {
+    document.getElementById("rightname").innerHTML = name;
+  }
+};
+changeScore = function(player, score) {
+  if (player == "left") {
+    document.getElementById("leftscore").innerHTML = score;
+  } else {
+    document.getElementById("rightscore").innerHTML = score;
+  }
+};
