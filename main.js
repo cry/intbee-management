@@ -32,13 +32,13 @@
 
         MathJax.Hub.Queue(["Text",math,tex]);
 
-        document.getElementById("time").innerHTML = time;
+        document.getElementById("time").textContent = time;
 
-        readydiv.innerHTML = "<h1>Round starts in <br> <span id='readytime' style='font-size: 4em'>" + prep + "</span> </h1>"
+        readydiv.innerHTML = "<h1>Round starts in <br> <span id='readytime' style='font-size: 4em'>" + Number(prep) + "</span> </h1>"
 
         readyCountdown = setInterval(() => {
             var counter = document.getElementById('readytime'),
-                val = counter.innerHTML;
+                val = counter.textContent;
 
             if (val == 1) {
                 readydiv.style.display = "none";
@@ -49,18 +49,18 @@
 
                 countdown = setInterval(() => {
                     var counter = document.getElementById('time'),
-                        val = counter.innerHTML;
+                        val = counter.textContent;
 
                         if (val == 1) {
-                            timediv.innerHTML = timeupMessage;
+                            timediv.textContent = timeupMessage;
 
                             clearInterval(countdown);
                         } else {
-                            if (!pause) counter.innerHTML = --val;
+                            if (!pause) counter.textContent = --val;
                         }
                 }, 1000)
             } else {
-                if (!pause) counter.innerHTML = --val;
+                if (!pause) counter.textContent = --val;
             }
         }, 1000);
 
@@ -73,19 +73,19 @@
             timediv = document.getElementById('time'),
             readydiv = document.getElementById('ready');
 
-        if (isNaN(Number(document.getElementById('time').innerHTML))) {
-            document.getElementById('time').innerHTML = time;
+        if (isNaN(Number(document.getElementById('time').textContent))) {
+            document.getElementById('time').textContent = time;
 
             countdown = setInterval(() => {
                 var counter = document.getElementById('time'),
-                    val = counter.innerHTML;
+                    val = counter.textContent;
 
                     if (val == 1) {
-                        timediv.innerHTML = timeupMessage;
+                        timediv.textContent = timeupMessage;
 
                         clearInterval(countdown);
                     } else {
-                        if (!pause) counter.innerHTML = --val;
+                        if (!pause) counter.textContent = --val;
                     }
             }, 1000)
 
@@ -93,7 +93,7 @@
             return;
         };
 
-        document.getElementById('time').innerHTML = Number(document.getElementById('time').innerHTML) + Number(time);
+        document.getElementById('time').textContent = Number(document.getElementById('time').textContent) + Number(time);
     }
 
     togglePause = () => {
@@ -109,16 +109,16 @@
 
     changeName = (player, name) => {
         if (player == "left") {
-            document.getElementById("leftname").innerHTML = name;
+            document.getElementById("leftname").textContent = name;
         } else {
-            document.getElementById("rightname").innerHTML = name;
+            document.getElementById("rightname").textContent = name;
         }
     }
 
     changeScore = (player, score) => {
         if (player == "left") {
-            document.getElementById("leftscore").innerHTML = score;
+            document.getElementById("leftscore").textContent = score;
         } else {
-            document.getElementById("rightscore").innerHTML = score;
+            document.getElementById("rightscore").textContent = score;
         }
     }
