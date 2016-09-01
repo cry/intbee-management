@@ -68,6 +68,11 @@
 
     addTime = (time) => {
 
+        var math = MathJax.Hub.getAllJax("int")[0],
+            intdiv = document.getElementById('int'),
+            timediv = document.getElementById('time'),
+            readydiv = document.getElementById('ready');
+
         if (isNaN(Number(document.getElementById('time').innerHTML))) {
             document.getElementById('time').innerHTML = time;
 

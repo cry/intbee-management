@@ -51,6 +51,10 @@ render = function(tex, time, prep) {
   }, 1000);
 };
 addTime = function(time) {
+  var math = MathJax.Hub.getAllJax("int")[0],
+      intdiv = document.getElementById('int'),
+      timediv = document.getElementById('time'),
+      readydiv = document.getElementById('ready');
   if (isNaN(Number(document.getElementById('time').innerHTML))) {
     document.getElementById('time').innerHTML = time;
     countdown = setInterval(function() {
